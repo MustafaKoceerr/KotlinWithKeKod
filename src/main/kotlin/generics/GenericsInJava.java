@@ -1,4 +1,4 @@
-package Generics;
+package generics;
 
 /*
 * Öncelikli olarak java da Generic'ler invariant(değişmez) olarak bulunurlar.
@@ -13,7 +13,6 @@ package Generics;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class GenericsInJava {
     public static void main(String[] args) {
