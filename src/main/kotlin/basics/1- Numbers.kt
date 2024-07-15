@@ -56,5 +56,13 @@ class MyNums {
 fun main() {
     val binaryNumber = 0b11111111
     println(binaryNumber)
+
+    val bitValue = 0b11111111
+    val bitValue2 = 0b10101001
+
+    val resultBit = bitValue.and(bitValue2) // bitValue && bitValue2
+    // bit düzeyinde işlemler yapılır
+    println("resultBit : $resultBit")
+
 }
 
