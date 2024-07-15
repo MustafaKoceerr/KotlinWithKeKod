@@ -3,6 +3,34 @@ package org.example.functions
 import java.util.*
 
 /**
+ *      Fonksiyonları neden kullanıyoruz? Neden her şeyi main içinde yazmıyoruz?
+ *      Eğer ki kodunuzu anlamlı olabilecek şekilde ayırabiliyorsanız,
+ *      Mesela binding olmadan önce, bir fonksiyon yazıp, örneğin createComponents, bunu main'in en başında
+ *      çağırırsan component init ile ilgili bir sorun olduğunda sadece o fonksiyona bakabilirsin.
+ *
+ *      aynı şekilde componenetler için event listesi oluşturup onları da ayrı bir fonksiyon haline getirebilirsin.
+ *
+ *      1- Gruplanabilir yapılan için kodun OKUNAKLIGINI ARTTIRMAK ADINA fonksiyonları çıkabilirsiniz.
+ *      2- Bir fonksiyonun business logic içerebilir,
+ *      Business logic (basitçe bir string converter işlemi bile yapıyorsan, class'ın içinde return ettiği değeri değiştiriyorsan) bunlar business logic'tir.
+ *      Bir mapping işlemi yapıyorsan business logic'tir.
+ *
+ *      Bu business logic'ler tek satır olsa bile harici bir fonksiyon olarak yazmak zorundasınız.
+ *      Tek satırlık bir alan bile olsa sen ona TEST yazacaksın.
+ *      Böylelikle kodun maintenance edilmesi çok daha kolay oluyor.
+ *
+ *      Örneğin 2 componenti bir fonksiyonda, 3 componenti başka bir fonksiyonda create etmeye çalışma.
+ *      Bu hiç anlamlı değil. Bu durumlarda fonksiyonları ayırma, ikisini birleştir.
+ *      Çünkü buna özel Test'de yazamazsın.
+ *
+ *      3- Bir kod parçası belli bir yerde tekrar ediyorsa ve bunu birden fazla yerde kullanıyorsanız.
+ *      Bu kodu fonksiyon haline çevirip, gereken yerlerde çağırmalısınız.
+ *      Böylece aynı yerde çağırılan fonksiyonlar için bir değişiklik yapmanız gerektiğinde sadece 1 yerde
+ *      değişiklik yaparak, tüm çağrılan yerlerde bunu uygulayacaksınız.
+ */
+
+
+/**
  *      fun keyword'u ile fonksiyonlar baslar.
  *      fonksiyon ismi verilir
  *      parametre parantezleri acilir ve parantezler girilir.
@@ -65,7 +93,7 @@ fun main(): Unit {
 
     getUserInfo2("Mustafa", "Kocer", "Istanbul", "Turkiye", "", "", "")
 
-    getUserInfo3(3, *arrayOf("Mustafa", "Kocer", "Istanbul", "Turkiye",  "Turk"))
+    getUserInfo3(3, *arrayOf("Mustafa", "Kocer", "Istanbul", "Turkiye", "Turk"))
 
     // Any parametre aldigi icin her turlu parametreyi gonderdik ama bu guzel bir kullanim degil
     getUserInfo4(3, "Mustafa", "Kocer", "Istanbul", "Turkiye", true, 3.14, "")
@@ -149,8 +177,66 @@ fun getUserInfo3(key: Int, vararg userInfo: String) {
     userInfo.get(3)
 }
 
-fun getUserInfo4( vararg userInfo: Any) {
+fun getUserInfo4(vararg userInfo: Any) {
     userInfo[3]
     userInfo.get(3)
 }
+
+
+/**
+ *      Default degeri olan parametrelere sahip bir fonksiyon JAVA siniflarindan cagrilacaksa eger,
+ *      Bu fonksiyona @JvmOverloads annotation'i verilmelidir. Böylece yazilan kod Jvm'e hazir hale getirilirken
+ *      ilgili fonksiyonun tum varyasyonlari yazilir (overload edilir)
+ */
+
+@JvmOverloads
+fun print(message: String = "Message") {
+    println(message)
+}
+
+
+/**
+ *      Extend edilebilir bir sinif, yavru (child) sinif tarafindan miras (inherit) alinirsa
+ *      ve bu sinifin override edilebilir open bir methodu varsa, bu method default argument'e
+ *      bu sinifi miras alan sinifta method override edilirse, override edilen methodun parametresine defaulr argument verilirse
+ *      Ust sinifin method'undaki default argument gecerli olur.
+ */
+
+private open class A {
+    open fun foo(i: Int = 10) {
+
+    }
+}
+
+private class B : A() {
+    override fun foo(i: Int) {
+        // no default value allowed
+    }
+}
+
+/**
+ * Bir fonksiyona = koyularak da return edeceği deger yazilabilir. (Single-Expression) kullanimi
+ */
+
+val userList = arrayOfNulls<String>(5)
+
+fun getListCount(): Int = userList.size
+fun getListCount2() = userList.size
+
+// Ayni isi yapiyorlar.
+fun getListCount3(): Int {
+    return userList.size
+}
+
+/**
+ * Nothing kullanımı
+ * Unit kullandığında herhangi bir şeyi return ettirmiyorsun, return gibi bir satırın olmuyor.
+ * Ve aslında hiçbir şey geri döndürmüyorum demektir.
+ *
+ * İllahaki bir şey döndürmeniz gerekiyorsa ve return ettirdiğiniz şeyin bir anlamı olmayacaksa,
+ * Yani siz onu bir değer olarak kullanmayacaksanız bu durumlar için
+ * Nothing'i kullanabilirsiniz.
+ *
+ * Daha çok exception handling yapilan yerlerde kullanirsin.
+ */
 
