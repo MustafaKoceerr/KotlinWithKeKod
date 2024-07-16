@@ -80,9 +80,9 @@ fun main() {
     // o class'ın fonksiyonu gibi çağırabilirsin.
 
 
-    val shape = Shape()
-    shape.type = "triangle"
-    println(shape.type)
+//    val shape = Shape()
+//    shape.type = "triangle"
+//    println(shape.type)
 
 }
 
@@ -196,18 +196,18 @@ fun Shape.setNumber(intNumber: Int){
  * Bu konu property vs filed konusu ile beraber sinif'lar islenirken detayli anlatilacaktir.
  */
 
-var Shape.type
-    get()="Rectangle"
-    set(value){
-        type = value
-    }
+//var Shape.type
+//    get()="Rectangle"
+//    set(value){
+//        type = value
+//    }
 
-fun Shape.getType():String{
-    return "Rectangle"
-}
-fun Shape.setType(value: String){
-    type = value
-}
+//fun Shape.getType():String{
+//    return "Rectangle"
+//}
+//fun Shape.setType(value: String){
+//    type = value
+//}
 /**
  * KOTLİNDE BİZ GERÇEK ANLAMDA DEĞİŞKEN TANIMLAMIYORUZ.
  * BİZ ASLINDA HEP FONKSİYONLAR TANIMLIYORUZ, GERÇEK ANLAMDAKİ DEĞİŞKENE HİÇ ULAŞMIYORUZ. GET FONKSİYONUNA ULAŞIYORUZ.
