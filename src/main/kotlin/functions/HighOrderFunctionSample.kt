@@ -77,18 +77,28 @@ fun main() {
     calculateAndPrint6(2, { number -> number * 2 })
 
     // parametre olarak verdiğimiz fonksiyon bir extension fonksiyon ise bu sekilde cagiriyoruz
-    calculateAndPrint9(2,4,
-        { numberOne:Int, numberTwo:Int ->
-            println("verdigim veya cagirdigim string "+this  )
-            numberOne/numberTwo})
+    calculateAndPrint9(2, 4,
+        { numberOne: Int, numberTwo: Int ->
+            println("verdigim veya cagirdigim string " + this)
+            numberOne / numberTwo
+        })
     // bu sekilde cagirirken sinifin bir ozelligini de kullanabiliriz cunku this dedigimiz sey aslında
     // elimizde bu örnek için çağırdıgımız string
-
 
 
     calculateAndPrint(2, fooAAA(), { _, _ -> 250 })
     // NOT: Burada fooAAA() parametre olarak cagirildi. bir HOF olarak değil.
     // HOF kısmı biden bir parametre değil fonksiyon gövdesi bekliyor.
+
+    sampleFoo {
+        "djasdfask"
+    }
+    // RETURN keyword'ünü kullanmayıp, return ettiğimiz değerler.
+    val deneme: String = if (true) {
+        "asdda"
+    } else {
+        "asdasdas"
+    }
 
 }
 
@@ -215,12 +225,15 @@ fun calculateAndPrint9(
     val result = "musti".operation(numberOne, numberTwo)
     // veya bu sekilde bir string parametre daha istiyor, cunku string function'a extension function verdik
     // extension funciton da biliyorsun byte code'a cevirmistik, kendisini her zaman parametre olarak aliyordu
-    val result2 = operation("mustimustimustii",numberOne, numberTwo)
+    val result2 = operation("mustimustimustii", numberOne, numberTwo)
     println("Result: $result")
 }
 
 
+//----------------------------------------
+fun sampleFoo(action: () -> String) {
 
+}
 
 
 
