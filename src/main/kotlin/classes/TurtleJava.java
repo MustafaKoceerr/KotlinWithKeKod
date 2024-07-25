@@ -1,5 +1,7 @@
 package classes;
 
+import java.util.ArrayList;
+
 public class TurtleJava {
     public TurtleJava(int feetCount, String feetColor) {
         this.feetCount = feetCount;
@@ -37,6 +39,11 @@ public class TurtleJava {
     }
 
     void swim() {
+    }
+
+    public static void main(String[] args) {
+        ArrayList<String> musti = new ArrayList<>();
+        musti.stream().map()
     }
 
 

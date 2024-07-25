@@ -18,6 +18,9 @@ fun main() {
     val sum2 = ::add.invoke(4,5)
     println(sum) // prints "7"
 
+    val musti = listOf(1,2,3,4,5)
+    musti.map {  }
+
 }
 
 fun add(a: Int, b: Int) = a + b

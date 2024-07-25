@@ -7,6 +7,7 @@ package org.example.classes
  * Direkt olarak open yaptığımız bir property'yi (değişken veya fonksiyon) override
  * etmesine Polymorphism denir ama->
  * DYNAMIC POLYMORPHISM denir.
+ * illaha override yapman gerekli 
  * override ile dinamik olarak fonksiyonu değiştiriyorum bu yüzden dynamic polymorphism
  * makeASound dog için farklı, cat için farklı
  */

@@ -1,5 +1,7 @@
 package org.example.classes
 
+import javax.swing.Box.Filler
+
 /**
  * Kotlinde bir class'ın önünde otomatik olarak final modifier'ı var.
  *
@@ -81,6 +83,11 @@ fun main() {
 
     dog.attackToTheWolf()
     cat.attackToTheWolf()
+    println("----------------")
+    val fillerRectangle = FilledRectangle()
+    val filler = fillerRectangle.Filler()
+    filler.drawAndFill()
+
     return
 }
 
@@ -92,7 +99,7 @@ open class Frag() {
 
 open class BaseFragment(val layoutId: Int) : Frag() {
 
-// Sadece Zaten var olan bir şeyi override edebiliriz
+    // Sadece Zaten var olan bir şeyi override edebiliriz
     override fun onViewCreated() {
 //        return inflate.inflater(layoutId)
     }
@@ -112,4 +119,49 @@ class ProfileFragment() : BaseFragment(2) {
     //        return inflate.inflater(R.layout.fragment_profile)
         }
      */
+}
+
+
+open class Rectangle() {
+    open fun draw() {
+        println("Drawing a rectangle")
+    }
+}
+
+class FilledRectangle() : Rectangle() {
+    override fun draw() {
+        val filler = Filler()
+        filler.drawAndFill()
+    }
+
+    inner class Filler {
+        fun fill() {
+            println("Filling")
+        }
+
+        fun drawAndFill() {
+            super@FilledRectangle.draw() // Call Rectangle draw fun
+            fill()
+            println("Drawn a filled rectangle with black borders")
+        }
+
+    }
+}
+
+
+interface Polygon{
+    fun draw(){  }
+}
+
+class Square() : Rectangle(), Polygon{
+    override fun draw() {
+        super<Rectangle>.draw()
+        super<Polygon>.draw()
+    }
+    /**
+     * Eğer iki tane miras aldığın class ve interface'ler aynı parametre, isim, geri dönüş değerli metodda çakışıyorsa
+     * <ClassName> ile bundan kaçınabilirsin.
+     * Araya artık arayüz giriyor.
+     */
+
 }
