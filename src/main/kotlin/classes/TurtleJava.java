@@ -43,7 +43,6 @@ public class TurtleJava {
 
     public static void main(String[] args) {
         ArrayList<String> musti = new ArrayList<>();
-        musti.stream().map()
     }
 
 
