@@ -10,7 +10,6 @@ repositories {
 }
 
 dependencies {
-    testImplementation("junit:junit:5.11.0-M2")
 }
 
 tasks.test {
