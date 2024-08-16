@@ -22,7 +22,6 @@ package org.example.classes
 
 class Pokemon(name:String, type:String, age:Int, origin:String)
 
-
 /**
  * Data class ne? Düz class'tan farkı ne? Neden DB'den gelen,
  * uzak sunucudan gelen dataları, düz class'la değil de data class'la karşılıyoruz, tercih etme eğilimindeyiz?
@@ -130,7 +129,6 @@ fun main(){
 
     val (name1, type1) = pair
 
-
     val pokemonName= pokemonData2.component1()
     val pokemonType = pokemonData2.component2()
     val pokemonToothCount =  pokemonData2.component3()
@@ -141,9 +139,6 @@ fun main(){
     // pair ve triple'ı kullanabilirsin. Örneğin pokemonun 5 tane parametresi var ama sana 2 tanesi lazım
     val (name3,type3) = Pair(pokemonData2.name, pokemonData2.type)
     val (name4,type4,toothCoun4) = Triple(pokemonData2.name, pokemonData2.type, pokemonData.toothCount)
-
-
-
 
     println(name2+type2+toothCount2.toString())
 }
