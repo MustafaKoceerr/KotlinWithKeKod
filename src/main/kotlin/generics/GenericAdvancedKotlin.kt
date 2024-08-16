@@ -1,3 +1,4 @@
+/*
 package org.example.Generics
 
 import kotlin.reflect.typeOf
@@ -172,3 +173,5 @@ fun demo2(){
 
 
 
+
+ */
