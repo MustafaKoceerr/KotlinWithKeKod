@@ -11,7 +11,7 @@ fun main() {
 }
 
 
-class Box {
+private class Box {
     var width = 20
     val height = 40
     var lenght = 50
